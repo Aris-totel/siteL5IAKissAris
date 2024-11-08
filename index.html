@@ -12,26 +12,40 @@
             background-color: #e0e7ff;
             color: #333;
             margin: 0;
-            padding: 0;
-        }
-        h1, h2 {
-            color: #FF0066;
+            padding-top: 80px; /* Offset for the fixed title */
         }
         h1 {
+            color: #FF0066;
             text-align: center;
-            margin-top: 20px;
             font-size: 2rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #e0e7ff;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            margin: 0;
         }
+
+        /* Stiluri pentru container principal */
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
         /* Stiluri pentru secțiuni */
         section {
-            width: 90%;
-            max-width: 800px;
-            margin: 20px auto;
             padding: 15px;
             background-color: #ffffff;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         /* Stiluri pentru listă */
         ul {
             list-style-type: none;
@@ -47,6 +61,7 @@
         a:hover {
             text-decoration: underline;
         }
+
         /* Stiluri pentru citat */
         blockquote {
             font-style: italic;
@@ -55,6 +70,7 @@
             padding-left: 10px;
             margin: 10px 0;
         }
+
         /* Stiluri pentru imagine */
         img {
             display: block;
@@ -64,24 +80,22 @@
             max-width: 150px;
             height: auto;
         }
+
         /* Media queries pentru adaptare */
         @media (min-width: 768px) {
             h1 {
                 font-size: 2.5rem;
             }
-            section {
-                padding: 20px;
-            }
-            ul li {
-                padding: 10px 0;
-            }
         }
+
         @media (min-width: 1024px) {
+            /* Two-column layout for desktop */
+            .container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+            }
             h1 {
                 font-size: 3rem;
-            }
-            section {
-                width: 70%;
             }
             img {
                 max-width: 200px;
@@ -92,49 +106,51 @@
 <body>
 <h1>Kiss Aris</h1>
 
-<!-- Date de identificare -->
-<section>
-    <h2>Date de identificare</h2>
-    <p><strong>Nume:</strong> Kiss G. </p>
-    <p><strong>Prenume:</strong> Aris-Eduard</p>
-</section>
+<div class="container">
+    <!-- Date de identificare -->
+    <section>
+        <h2>Date de identificare</h2>
+        <p><strong>Nume:</strong> Kiss G. </p>
+        <p><strong>Prenume:</strong> Aris-Eduard</p>
+    </section>
 
-<!-- Date de contact -->
-<section>
-    <h2>Date de contact</h2>
-    <p><strong>E-mail:</strong> aris_eduard@protonmail.com</p>
-</section>
+    <!-- Date de contact -->
+    <section>
+        <h2>Date de contact</h2>
+        <p><strong>E-mail:</strong> aris_eduard@protonmail.com</p>
+    </section>
 
-<!-- Poză -->
-<section>
-    <h2>Fotografie</h2>
-    <img src="DSC_0068.jpg" alt="Fotografie de profil">
-</section>
+    <!-- Poză -->
+    <section>
+        <h2>Fotografie</h2>
+        <img src="DSC_0068.jpg" alt="Fotografie de profil">
+    </section>
 
-<!-- Citat reprezentativ -->
-<section>
-    <h2>Citat reprezentativ</h2>
-    <blockquote>„Cea mai bună carte este viața.”</blockquote>
-</section>
+    <!-- Citat reprezentativ -->
+    <section>
+        <h2>Citat reprezentativ</h2>
+        <blockquote>„Cea mai bună carte este viața.”</blockquote>
+    </section>
 
-<!-- Discipline de aprofundat -->
-<section>
-    <h2>Discipline de aprofundat</h2>
-    <ul>
-        <li><a href="https://etti.utcluj.ro/files/Acasa/Site/FiseDisciplina/TstRo/11b.pdf">Programare</a> - I</li>
-        <li><a href="https://etti.utcluj.ro/files/Acasa/Site/FiseDisciplina/TstRo/01b.pdf">Analiză</a> - I</li>
-        <li><a href="https://etti.utcluj.ro/files/Acasa/Site/FiseDisciplina/TstRo/05b.pdf">CCP</a> - I</li>
-    </ul>
-</section>
+    <!-- Discipline de aprofundat -->
+    <section>
+        <h2>Discipline de aprofundat</h2>
+        <ul>
+            <li><a href="https://etti.utcluj.ro/files/Acasa/Site/FiseDisciplina/TstRo/11b.pdf">Programare</a> - I</li>
+            <li><a href="https://etti.utcluj.ro/files/Acasa/Site/FiseDisciplina/TstRo/01b.pdf">Analiză</a> - I</li>
+            <li><a href="https://etti.utcluj.ro/files/Acasa/Site/FiseDisciplina/TstRo/05b.pdf">CCP</a> - I</li>
+        </ul>
+    </section>
 
-<!-- Hobby-uri -->
-<section>
-    <h2>Hobby-uri și alte activități reprezentative</h2>
-    <ul>
-        <li>BASS</li>
-        <li>CODING</li>
-        <li>FISHING</li>
-    </ul>
-</section>
+    <!-- Hobby-uri -->
+    <section>
+        <h2>Hobby-uri și alte activități reprezentative</h2>
+        <ul>
+            <li>BASS</li>
+            <li>CODING</li>
+            <li>FISHING</li>
+        </ul>
+    </section>
+</div>
 </body>
 </html>
