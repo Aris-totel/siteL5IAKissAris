@@ -26,6 +26,7 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             z-index: 1000;
             margin: 0;
+            cursor: pointer;
         }
 
         /* Stiluri pentru container principal */
@@ -48,8 +49,8 @@
 
         /* Stiluri pentru listă */
         ul {
-            list-style-type: none;
-            padding: 0;
+            list-style-type: "🎸 ";
+            padding: 20px;
         }
         ul li {
             padding: 5px 0;
@@ -104,53 +105,83 @@
     </style>
 </head>
 <body>
-<h1>Kiss Aris</h1>
+<h1 onclick="switchProfile()">Kiss Aris</h1>
 
-<div class="container">
-    <!-- Date de identificare -->
-    <section>
-        <h2>Date de identificare</h2>
-        <p><strong>Nume:</strong> Kiss G. </p>
-        <p><strong>Prenume:</strong> Aris-Eduard</p>
-    </section>
-
-    <!-- Date de contact -->
-    <section>
-        <h2>Date de contact</h2>
-        <p><strong>E-mail:</strong> aris_eduard@protonmail.com</p>
-    </section>
-
-    <!-- Poză -->
-    <section>
-        <h2>Fotografie</h2>
-        <img src="DSC_0068.jpg" alt="Fotografie de profil">
-    </section>
-
-    <!-- Citat reprezentativ -->
-    <section>
-        <h2>Citat reprezentativ</h2>
-        <blockquote>„Cea mai bună carte este viața.”</blockquote>
-    </section>
-
-    <!-- Discipline de aprofundat -->
-    <section>
-        <h2>Discipline de aprofundat</h2>
-        <ul>
-            <li><a href="https://etti.utcluj.ro/files/Acasa/Site/FiseDisciplina/TstRo/11b.pdf">Programare</a> - I</li>
-            <li><a href="https://etti.utcluj.ro/files/Acasa/Site/FiseDisciplina/TstRo/01b.pdf">Analiză</a> - I</li>
-            <li><a href="https://etti.utcluj.ro/files/Acasa/Site/FiseDisciplina/TstRo/05b.pdf">CCP</a> - I</li>
-        </ul>
-    </section>
-
-    <!-- Hobby-uri -->
-    <section>
-        <h2>Hobby-uri și alte activități reprezentative</h2>
-        <ul>
-            <li>BASS</li>
-            <li>CODING</li>
-            <li>FISHING</li>
-        </ul>
-    </section>
+<div class="container" id="profileContainer">
+    <!-- Profil dinamic -->
 </div>
+
+<script>
+    const profiles = [
+        {
+            name: "Kiss G. Aris-Eduard",
+            email: "aris_eduard@protonmail.com",
+            photo: "DSC_0068.jpg",
+            quote: "Cea mai bună carte este viața.",
+            subjects: [
+                { name: "Programare", link: "https://etti.utcluj.ro/files/Acasa/Site/FiseDisciplina/TstRo/11b.pdf" },
+                { name: "Analiză", link: "https://etti.utcluj.ro/files/Acasa/Site/FiseDisciplina/TstRo/01b.pdf" },
+                { name: "CCP", link: "https://etti.utcluj.ro/files/Acasa/Site/FiseDisciplina/TstRo/05b.pdf" }
+            ],
+            hobbies: ["BASS", "CODING", "FISHING"]
+        },
+        {
+            name: "Popescu Alex",
+            email: "alex.popescu@example.com",
+            photo: "Gigachad Image.png",
+            quote: "Cunoașterea e putere.",
+            subjects: [
+                { name: "Fizică", link: "#" },
+                { name: "Matematică", link: "#" },
+                { name: "Chimie", link: "#" }
+            ],
+            hobbies: ["PIAN", "LECTURĂ", "DRUMEȚII"]
+        }
+    ];
+
+    let currentProfile = 0;
+
+    function renderProfile(profile) {
+        const container = document.getElementById('profileContainer');
+        container.innerHTML = `
+            <section>
+                <h2>Date de identificare</h2>
+                <p><strong>Nume:</strong> ${profile.name}</p>
+            </section>
+            <section>
+                <h2>Date de contact</h2>
+                <p><strong>E-mail:</strong> ${profile.email}</p>
+            </section>
+            <section>
+                <h2>Fotografie</h2>
+                <img src="${profile.photo}" alt="Fotografie de profil">
+            </section>
+            <section>
+                <h2>Citat reprezentativ</h2>
+                <blockquote>${profile.quote}</blockquote>
+            </section>
+            <section>
+                <h2>Discipline de aprofundat</h2>
+                <ul>
+                    ${profile.subjects.map(subject => `<li><a href="${subject.link}" target="_blank">${subject.name}</a></li>`).join('')}
+                </ul>
+            </section>
+            <section>
+                <h2>Hobby-uri și alte activități reprezentative</h2>
+                <ul>
+                    ${profile.hobbies.map(hobby => `<li>${hobby}</li>`).join('')}
+                </ul>
+            </section>
+        `;
+    }
+
+    function switchProfile() {
+        currentProfile = (currentProfile + 1) % profiles.length;
+        renderProfile(profiles[currentProfile]);
+    }
+
+    // Afișează profilul inițial
+    renderProfile(profiles[currentProfile]);
+</script>
 </body>
 </html>
